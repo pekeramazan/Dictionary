@@ -63,20 +63,13 @@ dependencies {
    // implementation(libs.hiltCompiler)
 
     // Retrofit
-// Retrofit
-    implementation(libs.retrofit) {
-        exclude("org.jetbrains","annotations")
-        exclude("com.intellij","annotations")
-    }
+    implementation(libs.retrofit)
     implementation(libs.retrofitConverterGson)
     implementation(libs.okhttp)
     implementation(libs.okhttpLoggingInterceptor)
 
     // Room
-    implementation(libs.roomRuntime) {
-        exclude("org.jetbrains","annotations")
-        exclude("com.intellij","annotations")
-    }
+    implementation(libs.roomRuntime) 
     implementation(libs.roomCompiler) {
         exclude("org.jetbrains","annotations")
         exclude("com.intellij","annotations")
