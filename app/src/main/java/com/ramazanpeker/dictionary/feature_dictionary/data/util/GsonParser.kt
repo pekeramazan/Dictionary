@@ -3,7 +3,7 @@ package com.ramazanpeker.dictionary.feature_dictionary.data.util
 import com.google.gson.Gson
 import java.lang.reflect.Type
 
-class GsonParson(
+class GsonParser(
     private val gson: Gson
 ) : JsonParser {
     override fun <T> fromJson(json: String, type: Type): T? {
