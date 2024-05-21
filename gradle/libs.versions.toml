@@ -38,6 +38,7 @@ daggerHiltAndroid = { group = "com.google.dagger", name = "hilt-android", versio
 daggerHiltCompiler = { group = "com.google.dagger", name = "hilt-android-compiler", version.ref = "hiltCompiler" }
 hiltNavigationCompose = { group = "androidx.hilt", name = "hilt-navigation-compose", version.ref = "hiltViewModel" }
 hiltLifecycleViewModel = { group = "androidx.hilt", name = "hilt-lifecycle-viewmodel", version.ref = "hiltViewModel" }
+hiltCompiler = { group = "androidx.hilt", name = "hilt-compiler", version.ref = "hiltViewModel" }
 
 retrofit = { group = "com.squareup.retrofit2", name = "retrofit", version.ref = "retrofit" }
 retrofitConverterGson = { group = "com.squareup.retrofit2", name = "converter-gson", version.ref = "retrofit" }
@@ -61,4 +62,5 @@ androidx-material3 = { group = "androidx.compose.material3", name = "material3" 
 [plugins]
 androidApplication = { id = "com.android.application", version.ref = "agp" }
 jetbrainsKotlinAndroid = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
-
+jetbrainsKotlinKapt = { id = "org.jetbrains.kotlin.kapt", version.ref = "kotlin" }
+daggerHiltAndroid = { id = "com.google.dagger.hilt.android", version.ref = "hilt" }

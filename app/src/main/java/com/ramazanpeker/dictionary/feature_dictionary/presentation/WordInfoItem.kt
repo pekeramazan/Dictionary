@@ -21,29 +21,38 @@ fun WordInfoItem(
     Column(
         modifier = modifier
     ) {
-        Text(
-            text = wordInfo.word,
-            fontSize = 24.sp,
-            fontWeight = FontWeight.Bold,
-            color = Color.Black
-        )
-        Text(
-            text = wordInfo.phonetic,
-            fontWeight = FontWeight.Light
-        )
-        Spacer(modifier = modifier.height(16.dp))
-        wordInfo.meanings?.forEach { meaning ->
-            Text(text = meaning.partOfSpeech, fontWeight = FontWeight.Bold)
-            meaning.definitions.forEachIndexed { i, definition ->
-                Text(text = "${i + 1}. ${definition.definition}")
-                Spacer(modifier = modifier.height(8.dp))
-                definition.example?.let {
-                    Text(text = "Example: $it")
-                }
-                Spacer(modifier = modifier.height(8.dp))
-            }
-            Spacer(modifier = modifier.height(16.dp))
+        wordInfo.let { wordInfo ->
+wordInfo.word?.let { word ->
+    Text(
+        text =word,
+        fontSize = 24.sp,
+        fontWeight = FontWeight.Bold,
+        color = Color.Black
+    )
+}
 
+            wordInfo.phonetic?.let { phonetic->
+                Text(
+                    text = phonetic,
+                    fontWeight = FontWeight.Light
+                )
+            }
+
+
+            Spacer(modifier = modifier.height(16.dp))
+            wordInfo.meanings?.forEach { meaning ->
+                Text(text = meaning.partOfSpeech, fontWeight = FontWeight.Bold)
+                meaning.definitions.forEachIndexed { i, definition ->
+                    Text(text = "${i + 1}. ${definition.definition}")
+                    Spacer(modifier = modifier.height(8.dp))
+                    definition.example?.let {
+                        Text(text = "Example: $it")
+                    }
+                    Spacer(modifier = modifier.height(8.dp))
+                }
+                Spacer(modifier = modifier.height(16.dp))
+
+            }
         }
     }
 

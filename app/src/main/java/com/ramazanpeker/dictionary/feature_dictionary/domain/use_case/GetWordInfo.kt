@@ -10,7 +10,7 @@ class GetWordInfo(
     private val repository: WordInfoRepository
 ) {
     operator fun invoke(word: String): Flow<Resource<List<WordInfo>>> {
-        if (word.isNotBlank()) {
+        if (word.isBlank()) {
             return flow {  }
         }
         return repository.getWordInfo(word)

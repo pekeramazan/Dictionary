@@ -1,8 +1,13 @@
+import org.gradle.internal.impldep.org.junit.experimental.categories.Categories.CategoryFilter.exclude
 import org.jetbrains.kotlin.gradle.utils.extendsFrom
 
 plugins {
     alias(libs.plugins.androidApplication)
     alias(libs.plugins.jetbrainsKotlinAndroid)
+    alias(libs.plugins.daggerHiltAndroid)
+    id ("kotlin-kapt")
+
+
 }
 
 android {
@@ -47,8 +52,13 @@ android {
     packaging {
         resources {
             excludes += "/META-INF/{AL2.0,LGPL2.1}"
+            excludes += "META-INF/gradle/incremental.annotation.processors"
         }
     }
+ /*   kapt {
+        correctErrorTypes = true
+        includeCompileClasspath = false
+    }*/
 }
 dependencies {
 
@@ -77,12 +87,20 @@ dependencies {
     implementation(libs.lifecycleViewModelKtx)
 
     // Dagger - Hilt
-    implementation(libs.daggerHiltAndroid)
+   /* implementation(libs.daggerHiltAndroid)
     implementation(platform(libs.daggerHiltCompiler))
     implementation(libs.hiltNavigationCompose)
     implementation(libs.hiltLifecycleViewModel)
-   // implementation(libs.hiltCompiler)
+    implementation(libs.hiltCompiler)*/
 
+    //Dagger - Hilt
+    implementation ("com.google.dagger:hilt-android:2.51.1")
+    kapt ("com.google.dagger:hilt-android-compiler:2.51.1")
+    //implementation ("androidx.hilt:hilt-lifecycle-viewmodel:1.0.0-alpha03")
+    kapt ("androidx.hilt:hilt-compiler:1.2.0")
+    implementation ("androidx.hilt:hilt-navigation-compose:1.2.0")
+    implementation ("androidx.hilt:hilt-navigation-fragment:1.2.0")
+    //implementation ("org.jetbrains.kotlin:kotlin-stdlib:1.9.0")
     // Retrofit
     implementation(libs.retrofit)
     implementation(libs.retrofitConverterGson)
@@ -91,7 +109,7 @@ dependencies {
 
     // Room
     implementation(libs.roomRuntime)
-    implementation(libs.roomCompiler) {
+    kapt(libs.roomCompiler) {
         exclude("org.jetbrains","annotations")
         exclude("com.intellij","annotations")
     }
